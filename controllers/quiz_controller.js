@@ -2,11 +2,23 @@ var models = require('../models');
 
 // Get /quizes
 exports.index = function(req, res, next) {
-  models.Quiz.findAll().then(function(quizes) {
-    res.render('quizes/index.ejs', { quizes: quizes });
-  }).catch(function(error) {
-    next(error);
-  });
+if (req.query.search == null) {
+    models.Quiz.findAll().then(function(quizes) {
+      if (quizes) {
+        res.render('quizes/index.ejs', { quizes: quizes });
+      }
+    }).catch(function(error) {
+      next(error);
+    });
+  } else {
+    models.Quiz.findAll({where: {question: {$like: '%' + req.query.search + '%'}}}).then(function(quizes) {
+      if (quizes) {
+        res.render('quizes/index.ejs', { quizes: quizes });
+      }
+    }).catch(function(error) {
+      next(error);
+    });
+  }
 };
 
 // GET /quizes/:id
