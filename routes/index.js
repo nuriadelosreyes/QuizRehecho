@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var quizController = require('../controllers/quiz_controller');
 var userController = require('../controllers/user_controller');
+var sessionController = require('../controllers/session_controller');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Quiz', url: 'https://github.com/nuriadelosreyes/QuizRehecho' });
@@ -24,5 +25,8 @@ router.post('/users', userController.create);
 router.get('/users/:userId(\\d+)/edit', userController.edit);
 router.put('/users/:userId(\\d+)', userController.update);
 router.delete('/users/:userId(\\d+)', userController.destroy);
-
+/* Session */
+router.get('/session', sessionController.new);
+router.post('/session', sessionController.create);
+router.delete('/session', sessionController.destroy);
 module.exports = router;

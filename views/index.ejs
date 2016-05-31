@@ -5,7 +5,17 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1>Bienvenido a <%= title %></h1>
+        <div>
+      <h1>Bienvenido a <%= title %></h1>
+      <% if (!session.user) { %>
+        <h3><a href="/users/new">Registrarse</a></h3>
+        <h3><a href="/session">Login</a></h3>
+      <% } else { %>
+        <%= session.user.username %> 
+        <h3><a href="/users/<%= session.user.id %>">Perfil</a></h3>
+        <h3><a href="/session?_method=DELETE">Logout</a></h3>
+      <% } %>
+    </div>
     <p>El portal donde podrá crear sus propios juegos!</p>
     <p><a href="/quizes">Comience a jugar</a></p>
     <footer>
