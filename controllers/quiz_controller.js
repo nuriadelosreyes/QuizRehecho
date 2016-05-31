@@ -5,7 +5,11 @@ exports.index = function(req, res, next) {
 if (req.query.search == null) {
     models.Quiz.findAll().then(function(quizes) {
       if (quizes) {
-        res.render('quizes/index.ejs', { quizes: quizes });
+        if (req.params.format == 'json') {
+          res.json(quizes);
+        } else {
+          res.render('quizes/index.ejs', { quizes: quizes,  subtitulo: 0 });
+        }
       }
     }).catch(function(error) {
       next(error);
@@ -13,7 +17,11 @@ if (req.query.search == null) {
   } else {
     models.Quiz.findAll({where: {question: {$like: '%' + req.query.search + '%'}}}).then(function(quizes) {
       if (quizes) {
-        res.render('quizes/index.ejs', { quizes: quizes });
+        if (req.params.format == 'json') {
+          res.json(quizes);
+        } else {
+          res.render('quizes/index.ejs', { quizes: quizes, subtitulo: 1  });
+        }
       }
     }).catch(function(error) {
       next(error);
@@ -25,8 +33,12 @@ if (req.query.search == null) {
 exports.show = function(req, res, next) {
   models.Quiz.findById(req.params.quizId).then(function(quiz) {
     if (quiz) {
-      var answer = req.query.answer || '';
-      res.render('quizes/show', { npregunta: req.params.quizId, quiz: quiz, answer: answer });
+      if (req.params.format == 'json') {
+        res.json(quizes);
+      } else {
+        var answer = req.query.answer || '';
+        res.render('quizes/show', { npregunta: req.params.quizId, quiz: quiz, answer: answer });
+      }
     } else {
       throw new Error('No hay preguntas en la BBDD.');
     }

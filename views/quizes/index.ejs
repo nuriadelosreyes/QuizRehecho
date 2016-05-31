@@ -7,10 +7,9 @@
 	</head>
 	<body>
 		<h1>Preguntas</h1>
-		<p><form method="get" action="/quizes">
-			<input type="text" name="search" value="" placeholder="Buscar pregunta" required/>
-			<input type="submit" name="Buscar" value="Buscar">
-		</form></p>
+		<% if (subtitulo = 1) { %>
+		<p>Resultados de la búsqueda</p>
+		<% } %>
 		<table>
 			<% for (var i in quizes) { %>
 			<tr>
@@ -19,8 +18,15 @@
 			<% } %>
 		</table>
 		<footer>
-			<p><a href="/">Volver</a></p>
+			<p><form method="get" action="/quizes">
+				<input type="text" name="search" value="" placeholder="Buscar pregunta" required/>
+				<input type="submit" name="Buscar" value="Buscar">
+			</form></p>
+			<% if (subtitulo = 1) { %>
 			<p><a href="/quizes">Mostrar todas las preguntas</a></p>
+			<% } %>
+			<p><a href="/">Volver</a></p>
+			
 		</footer>
 	</body>
 </html>
