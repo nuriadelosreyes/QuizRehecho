@@ -2,13 +2,13 @@ var models = require('../models');
 
 // Get /quizes
 exports.index = function(req, res, next) {
-if (req.query.search == null) {
+if (req.query.search == undefined) {
     models.Quiz.findAll().then(function(quizes) {
       if (quizes) {
         if (req.params.format == 'json') {
           res.json(quizes);
         } else {
-          res.render('quizes/index.ejs', { quizes: quizes,  subtitulo: 0 });
+          res.render('quizes/index.ejs', { quizes: quizes, subtitulo: 0 });
         }
       }
     }).catch(function(error) {
@@ -20,7 +20,7 @@ if (req.query.search == null) {
         if (req.params.format == 'json') {
           res.json(quizes);
         } else {
-          res.render('quizes/index.ejs', { quizes: quizes, subtitulo: 1  });
+          res.render('quizes/index.ejs', { quizes: quizes, subtitulo: 1 });
         }
       }
     }).catch(function(error) {

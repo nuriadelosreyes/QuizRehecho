@@ -7,7 +7,7 @@
 	</head>
 	<body>
 		<h1>Preguntas</h1>
-		<% if (subtitulo = 1) { %>
+		<% if (subtitulo == 1) { %>
 		<p>Resultados de la búsqueda</p>
 		<% } %>
 		<table>
@@ -22,7 +22,7 @@
 				<input type="text" name="search" value="" placeholder="Buscar pregunta" required/>
 				<input type="submit" name="Buscar" value="Buscar">
 			</form></p>
-			<% if (subtitulo = 1) { %>
+			<% if (subtitulo == 1) { %>
 			<p><a href="/quizes">Mostrar todas las preguntas</a></p>
 			<% } %>
 			<p><a href="/">Volver</a></p>
