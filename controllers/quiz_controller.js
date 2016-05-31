@@ -2,7 +2,7 @@ var models = require('../models');
 
 // GET /question
 exports.question = function(req, res, next) {
-  models.quiz.findOne().then(function(quiz) {
+  models.Quiz.findOne().then(function(quiz) {
     if (quiz) {
       var answer = req.query.answer || '';
       res.render('quizes/question', {question: 'Capital de Italia', answer: answer});
@@ -16,7 +16,7 @@ exports.question = function(req, res, next) {
 
 // GET /check
 exports.check = function(req, res, next) {
-  models.quiz.findOne().then(function(quiz) {
+  models.Quiz.findOne().then(function(quiz) {
     if (quiz) {
       var answer = req.query.answer || '';
       var result = answer === quiz.answer ? 'correcta' : 'incorrecta';
