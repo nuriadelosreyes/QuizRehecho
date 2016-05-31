@@ -8,6 +8,9 @@
  	<body>
  		<h2>Quiz: el juego de las preguntas</h2>
  		<p>La respuesta <strong><%= answer %></strong> es <%= result %><p>
- 		<p><a href="/question?answer=<%= answer %>">Inténtelo otra vez</a></p>
+ 		<footer>
+			<p><a href="/quizes/<%= npregunta %>?answer=<%= answer %>">Inténtelo otra vez</a></p>
+			<p><a href="/quizes/">Elegir pregunta</a></p>
+		</footer>
  	</body>
  </html>
