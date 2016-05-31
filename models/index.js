@@ -51,8 +51,8 @@ sequelize.sync().then(function() {
 	return User.count().then(function (c) {
 		if (c === 0) { // la tabla se inicializa si está vacía 
 			return User.bulkCreate([
-				{ username: 'admin', password: 'rm193210', salt: 'tyrn', isAdmin: true },
-				{ username: 'oscar', password: 'rm193210', salt: 'akqj', isAdmin: false }
+				{ username: 'admin', password: 'cangrejo88', salt: 'tyrn', isAdmin: true },
+				{ username: 'nuria', password: 'cangrejo88', salt: 'akqj', isAdmin: false }
 			]).then(function(){
 				console.log('Base de usuarios inicializada');
 			});
