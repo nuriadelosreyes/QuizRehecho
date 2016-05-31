@@ -4,10 +4,10 @@ var quizController = require('../controllers/quiz_controller');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Quiz' });
+  res.render('index', { title: 'Quiz', url: 'https://github.com/nuriadelosreyes/QuizRehecho' });
 });
 router.get('/author', function(req, res, next) {
-  res.render('author', { author:'Nuria de los Reyes' , url:'https://github.com/nuriadelosreyes/QuizRehecho.git' });
+  res.render('author', { author:'Nuria de los Reyes' , url:'https://github.com/nuriadelosreyes/QuizRehecho' });
 });
 
 /* GET question */
